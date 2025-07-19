@@ -6,7 +6,7 @@ import com.kailash.ecommercespringboot.dto.FakeStoreCategoryResponseDTO;
 import java.util.List;
 import java.util.stream.Collectors;
 
-public class FakeStoreCatResptoProdDto {
+public class FakeStoreCatResptoProdMapper {
 
     public static List<CategoryDTO> toCategoryDto(FakeStoreCategoryResponseDTO fakeStoreCategoryResponseDTO)
     {

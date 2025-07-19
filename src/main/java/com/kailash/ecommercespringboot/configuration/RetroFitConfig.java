@@ -5,6 +5,7 @@ import com.kailash.ecommercespringboot.gateway.api.FakeStoreProductApi;
 import io.github.cdimascio.dotenv.Dotenv;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.client.RestTemplate;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
@@ -35,5 +36,6 @@ public class RetroFitConfig {
     {
         return retrofit.create(FakeStoreProductApi.class);
     }
+
 
 }
