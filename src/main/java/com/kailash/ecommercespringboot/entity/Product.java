@@ -20,4 +20,5 @@ public class Product extends BaseEntity {
     String color;
     String category;
     Integer discount;
+    Long id;
 }

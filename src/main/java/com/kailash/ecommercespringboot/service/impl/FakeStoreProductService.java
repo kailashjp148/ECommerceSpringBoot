@@ -18,11 +18,18 @@ public class FakeStoreProductService implements IProductService {
     {
         this.productGateway=productGateway;
     }
-    @Override
-    public ProductDto getProduct(Long id) throws IOException {
+
+    public ProductDetailsDto getProduct(Long id) throws IOException {
 
         ProductDetailsDto productDetails=productGateway.getProduct(id);
 
-        return ProductDto.builder().id(productDetails.getId()).title(productDetails.getTitle()).price(productDetails.getPrice()).brand(productDetails.getBrand()).build();
+        return ProductDetailsDto.builder().id(productDetails.getId()).title(productDetails.getTitle()).price(productDetails.getPrice()).brand(productDetails.getBrand()).build();
+    }
+
+
+
+    public ProductDetailsDto createProduct(ProductDetailsDto productDto)
+    {
+        return null;
     }
 }
