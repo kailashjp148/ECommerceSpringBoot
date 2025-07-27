@@ -4,11 +4,9 @@ package com.kailash.ecommercespringboot.controller;
 import com.kailash.ecommercespringboot.dto.CategoryDTO;
 import com.kailash.ecommercespringboot.dto.ProductDto;
 import com.kailash.ecommercespringboot.service.ICategoryService;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.io.IOException;
 import java.util.List;
@@ -20,17 +18,31 @@ public class CategoryController {
 
     private ICategoryService categoryService;
 
-    CategoryController(ICategoryService categoryService) {
+    CategoryController(@Qualifier("categoryService")
+                       ICategoryService categoryService) {
         this.categoryService = categoryService;
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> getAllCategories() throws IOException {
-        List<CategoryDTO> result= categoryService.getAllCategories();
-        return ResponseEntity.ok(result);
+    public ResponseEntity<?> getAllCategories(@RequestParam(required = false) String name) throws Exception {
+
+        if(name!=null && !name.isEmpty())
+        {
+            CategoryDTO categoryDTO=categoryService.getByName(name);
+            return ResponseEntity.ok(categoryDTO);
+        }
+        else {
+            List<CategoryDTO> result = categoryService.getAllCategories();
+            return ResponseEntity.ok(result);
+        }
     }
 
+    @PostMapping
+    public ResponseEntity<CategoryDTO> createCategory(@RequestBody CategoryDTO categoryDto)
+    {
+        CategoryDTO category=categoryService.createCategory(categoryDto);
 
-
+        return ResponseEntity.ok(category);
+    }
 
 }

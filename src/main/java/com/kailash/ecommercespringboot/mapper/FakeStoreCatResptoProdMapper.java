@@ -12,7 +12,7 @@ public class FakeStoreCatResptoProdMapper {
     {
         return fakeStoreCategoryResponseDTO.getCategories()
                 .stream()
-                .map(CategoryDTO::new)
+                .map(category ->CategoryDTO.builder().name(category).build())
                 .collect(Collectors.toList());
     }
 

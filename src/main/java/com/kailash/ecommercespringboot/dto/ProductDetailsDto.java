@@ -25,6 +25,6 @@ public class ProductDetailsDto {
     String brand;
     String model;
     String color;
-    String category;
+    Long categoryId;
     Integer discount;
 }

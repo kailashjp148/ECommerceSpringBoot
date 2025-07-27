@@ -1,6 +1,8 @@
 package com.kailash.ecommercespringboot.entity;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import lombok.*;
 
 @Entity
@@ -18,7 +20,10 @@ public class Product extends BaseEntity {
     String brand;
     String model;
     String color;
-    String category;
+
+    @ManyToOne
+    @JoinColumn(name="categoryId",nullable = false)
+    Category category;
+
     Integer discount;
-    Long id;
 }

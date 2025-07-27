@@ -2,6 +2,7 @@ package com.kailash.ecommercespringboot.service.impl;
 
 import com.kailash.ecommercespringboot.dto.ProductDetailsDto;
 import com.kailash.ecommercespringboot.dto.ProductDto;
+import com.kailash.ecommercespringboot.dto.ProductWithCategoryDto;
 import com.kailash.ecommercespringboot.gateway.IProductGateway;
 import com.kailash.ecommercespringboot.service.ICategoryService;
 import com.kailash.ecommercespringboot.service.IProductService;
@@ -30,6 +31,11 @@ public class FakeStoreProductService implements IProductService {
 
     public ProductDetailsDto createProduct(ProductDetailsDto productDto)
     {
+        return null;
+    }
+
+    @Override
+    public ProductWithCategoryDto getProductWithCategory(Long id) {
         return null;
     }
 }

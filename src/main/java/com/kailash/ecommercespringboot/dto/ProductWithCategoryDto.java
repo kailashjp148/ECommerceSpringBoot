@@ -6,14 +6,21 @@ import lombok.*;
 
 @Getter
 @Setter
+@Builder
 @AllArgsConstructor
 @NoArgsConstructor
-@Builder
-public class CategoryDTO {
-
+public class ProductWithCategoryDto {
     @JsonProperty(access = JsonProperty.Access.READ_ONLY)
     @Schema(accessMode = Schema.AccessMode.READ_ONLY)
     Long id;
 
-    private String name;
+    String title;
+    String image;
+    Integer price;
+    String description;
+    String brand;
+    String model;
+    String color;
+    CategoryDTO category;
+    Integer discount;
 }
