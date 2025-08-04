@@ -3,8 +3,11 @@ package com.kailash.ecommercespringboot.controller;
 import com.kailash.ecommercespringboot.dto.ProductDetailsDto;
 import com.kailash.ecommercespringboot.dto.ProductDto;
 import com.kailash.ecommercespringboot.dto.ProductWithCategoryDto;
+import com.kailash.ecommercespringboot.exception.ProductNotFoundException;
 import com.kailash.ecommercespringboot.service.IProductService;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -22,10 +25,14 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDetailsDto> getProduct(@PathVariable Long id) throws Exception {
-        ProductDetailsDto result=productService.getProduct(id);
+    public ResponseEntity<?> getProduct(@PathVariable Long id)  {
 
-        return ResponseEntity.ok(result);
+
+                ProductDetailsDto result = productService.getProduct(id);
+                return ResponseEntity.ok(result);
+
+
+
     }
 
     @PostMapping
@@ -40,4 +47,5 @@ public class ProductController {
 
         return ResponseEntity.ok(productWithCategoryDto);
     }
+
 }

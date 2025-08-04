@@ -7,7 +7,7 @@ import com.kailash.ecommercespringboot.dto.ProductWithCategoryDto;
 import java.io.IOException;
 
 public interface IProductService {
-    public ProductDetailsDto getProduct(Long id) throws Exception;
+    public ProductDetailsDto getProduct(Long id);
 
     public ProductDetailsDto createProduct(ProductDetailsDto productDto) throws Exception;
 

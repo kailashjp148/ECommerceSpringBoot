@@ -20,11 +20,18 @@ public class FakeStoreProductService implements IProductService {
         this.productGateway=productGateway;
     }
 
-    public ProductDetailsDto getProduct(Long id) throws IOException {
+    public ProductDetailsDto getProduct(Long id)  {
 
-        ProductDetailsDto productDetails=productGateway.getProduct(id);
+        try {
+            ProductDetailsDto productDetails = productGateway.getProduct(id);
 
-        return ProductDetailsDto.builder().id(productDetails.getId()).title(productDetails.getTitle()).price(productDetails.getPrice()).brand(productDetails.getBrand()).build();
+            return ProductDetailsDto.builder().id(productDetails.getId()).title(productDetails.getTitle()).price(productDetails.getPrice()).brand(productDetails.getBrand()).build();
+        }
+        catch(IOException ex)
+        {
+            throw new RuntimeException("did not get product with id "+id);
+        }
+
     }
 
 

@@ -5,6 +5,7 @@ import com.kailash.ecommercespringboot.dto.ProductDto;
 import com.kailash.ecommercespringboot.dto.ProductWithCategoryDto;
 import com.kailash.ecommercespringboot.entity.Category;
 import com.kailash.ecommercespringboot.entity.Product;
+import com.kailash.ecommercespringboot.exception.ProductNotFoundException;
 import com.kailash.ecommercespringboot.mapper.ProductMapper;
 import com.kailash.ecommercespringboot.repository.CategoryRepository;
 import com.kailash.ecommercespringboot.repository.ProductRepository;
@@ -27,10 +28,10 @@ public class ProductService implements IProductService {
     }
 
     @Override
-    public ProductDetailsDto getProduct(Long id) throws Exception {
+    public ProductDetailsDto getProduct(Long id) {
         return productRepository.findById(id)
                 .map(ProductMapper::toDto)
-                .orElseThrow(()->new Exception("Product not found"));
+                .orElseThrow(()->new ProductNotFoundException("Product not found with id "+id));
     }
 
     @Override
