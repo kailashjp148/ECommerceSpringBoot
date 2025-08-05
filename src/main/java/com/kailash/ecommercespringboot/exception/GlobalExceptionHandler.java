@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
     @ExceptionHandler(Exception.class)
     public ResponseEntity<ErrorResponse> handleGenericException(Exception ex)
     {
-        ErrorResponse er=ErrorResponse.builder().errorCode(HttpStatus.INTERNAL_SERVER_ERROR.value()).message(ex.getMessage()).timestamp(LocalDateTime.now()).build();
+        ErrorResponse er=ErrorResponse.builder().errorCode(HttpStatus.INTERNAL_SERVER_ERROR.value()).message("An unexpected error occured").timestamp(LocalDateTime.now()).build();
 
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR.value()).body(er);
     }
